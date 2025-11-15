@@ -31,7 +31,7 @@ public class ProductController {
     @DeleteMapping("/products/{id}")
     public String deleteProductById(@PathVariable("id") Long productId) {
         productService.deleteProductById(productId);
-        return "Produs sters!";
+        return "Product deleted successfully!";
     }
 
     @PutMapping("/products/{id}")
@@ -42,5 +42,10 @@ public class ProductController {
     @GetMapping("/name/{name}")
     public List<Product> fetchProductByName(@PathVariable("name") String name) {
         return productService.fetchProductByName(name);
+    }
+
+    @GetMapping("/products/price")
+    public List<Product> fetchProductPrice(@RequestParam double min,@RequestParam double max) {
+        return productService.fetchProductPrice(min, max);
     }
 }

@@ -16,7 +16,7 @@ public class Product {
     private String category;
     private String subcategory;
     private String sellerName;
-    private Long price;
+    private Double price;
     private Long quantity;
 
     public Long getProductId() {
@@ -67,11 +67,11 @@ public class Product {
         this.sellerName = numeVanzator;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long pret) {
+    public void setPrice(Double pret) {
         this.price = pret;
     }
 
@@ -83,7 +83,7 @@ public class Product {
         this.quantity = cantitate;
     }
 
-    public Product(Long productId, String name, String description, String category, String sellerName, String subcategory, Long quantity, Long price) {
+    public Product(Long productId, String name, String description, String category, String sellerName, String subcategory, Long quantity, Double price) {
         this.productId = productId;
         this.name = name;
         this.description = description;

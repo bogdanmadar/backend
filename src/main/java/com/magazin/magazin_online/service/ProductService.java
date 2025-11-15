@@ -16,4 +16,6 @@ public interface ProductService {
     public Product updateProduct(Long productId, Product product);
 
     public List<Product> fetchProductByName(String name);
+
+    public List<Product> fetchProductPrice(double min, double max);
 }

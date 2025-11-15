@@ -74,4 +74,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> fetchProductByName(String name) {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
+
+    @Override
+    public List<Product> fetchProductPrice(double min, double max) {
+        return productRepository.findByPriceBetween(min, max);
+    }
 }
