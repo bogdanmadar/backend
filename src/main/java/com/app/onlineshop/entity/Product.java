@@ -1,4 +1,4 @@
-package com.magazin.magazin_online.entity;
+package com.app.onlineshop.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

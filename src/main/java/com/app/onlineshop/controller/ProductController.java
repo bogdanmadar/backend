@@ -1,7 +1,7 @@
-package com.magazin.magazin_online.controller;
+package com.app.onlineshop.controller;
 
-import com.magazin.magazin_online.entity.Product;
-import com.magazin.magazin_online.service.ProductService;
+import com.app.onlineshop.entity.Product;
+import com.app.onlineshop.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

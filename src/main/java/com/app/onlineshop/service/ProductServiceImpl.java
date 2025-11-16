@@ -1,7 +1,7 @@
-package com.magazin.magazin_online.service;
+package com.app.onlineshop.service;
 
-import com.magazin.magazin_online.entity.Product;
-import com.magazin.magazin_online.repository.ProductRepository;
+import com.app.onlineshop.entity.Product;
+import com.app.onlineshop.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

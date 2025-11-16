@@ -1,6 +1,6 @@
-package com.magazin.magazin_online.repository;
+package com.app.onlineshop.repository;
 
-import com.magazin.magazin_online.entity.Product;
+import com.app.onlineshop.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

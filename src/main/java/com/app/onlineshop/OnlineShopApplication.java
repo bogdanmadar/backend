@@ -1,4 +1,4 @@
-package com.magazin.magazin_online;
+package com.app.onlineshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.magazin.magazin_online;
+package com.app.onlineshop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
