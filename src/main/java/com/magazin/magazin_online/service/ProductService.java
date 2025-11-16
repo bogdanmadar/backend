@@ -5,17 +5,15 @@ import com.magazin.magazin_online.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    public Product saveProduct(Product product);
+    Product saveProduct(Product product);
 
-    public List<Product> fetchProductList();
+    List<Product> fetchProductList();
 
-    public Product fetchProductById(Long productId);
+    Product fetchProductById(Long productId);
 
-    public void deleteProductById(Long productId);
+    void deleteProductById(Long productId);
 
-    public Product updateProduct(Long productId, Product product);
+    Product updateProduct(Long productId, Product product);
 
-    public List<Product> fetchProductByName(String name);
-
-    public List<Product> fetchProductPrice(double min, double max);
+    List<Product> searchProducts(String name, Double minPrice, Double maxPrice);
 }

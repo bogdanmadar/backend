@@ -39,75 +39,61 @@ public class Product {
         return description;
     }
 
-    public void setDescription(String descriere) {
-        this.description = descriere;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String categorie) {
-        this.category = categorie;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getSubcategory() {
         return subcategory;
     }
 
-    public void setSubcategory(String subcategorie) {
-        this.subcategory = subcategorie;
+    public void setSubcategory(String subcategory) {
+        this.subcategory = subcategory;
     }
 
     public String getSellerName() {
         return sellerName;
     }
 
-    public void setSellerName(String numeVanzator) {
-        this.sellerName = numeVanzator;
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
 
     public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Double pret) {
-        this.price = pret;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long cantitate) {
-        this.quantity = cantitate;
-    }
-
-    public Product(Long productId, String name, String description, String category, String sellerName, String subcategory, Long quantity, Double price) {
-        this.productId = productId;
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.sellerName = sellerName;
-        this.subcategory = subcategory;
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
-        this.price = price;
-    }
-
-    public Product() {
     }
 
     @Override
     public String toString() {
-        return "Produs{" +
-                "produsId=" + productId +
-                ", nume='" + name + '\'' +
-                ", descriere='" + description + '\'' +
-                ", categorie='" + category + '\'' +
-                ", subcategorie='" + subcategory + '\'' +
-                ", numeVanzator='" + sellerName + '\'' +
-                ", pret=" + price +
-                ", cantitate=" + quantity +
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", subcategory='" + subcategory + '\'' +
+                ", sellerName='" + sellerName + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }

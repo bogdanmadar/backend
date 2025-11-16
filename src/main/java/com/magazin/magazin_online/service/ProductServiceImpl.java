@@ -2,7 +2,6 @@ package com.magazin.magazin_online.service;
 
 import com.magazin.magazin_online.entity.Product;
 import com.magazin.magazin_online.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.Objects;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     @Override
     public Product saveProduct(Product product) {
@@ -25,45 +27,46 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product fetchProductById(Long produsId) {
-        return productRepository.findById(produsId).get();
+    public Product fetchProductById(Long productId) {
+        return productRepository.findById(productId).get();
     }
 
     @Override
-    public void deleteProductById(Long produsId) {
-        productRepository.deleteById(produsId);
+    public void deleteProductById(Long productId) {
+        productRepository.deleteById(productId);
     }
 
     @Override
-    public Product updateProduct(Long produsId, Product product) {
+    public Product updateProduct(Long productId, Product product) {
 
-        Product prodDB = productRepository.findById(produsId).get();
+        Product prodDB = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
 
-        if(Objects.nonNull(product.getName()) && !"" .equalsIgnoreCase(product.getName())) {
+        if (Objects.nonNull(product.getName()) && !"".equalsIgnoreCase(product.getName())) {
             prodDB.setName(product.getName());
         }
 
-        if(Objects.nonNull(product.getDescription()) && !"" .equalsIgnoreCase(product.getDescription())) {
+        if (Objects.nonNull(product.getDescription()) && !"".equalsIgnoreCase(product.getDescription())) {
             prodDB.setDescription(product.getDescription());
         }
 
-        if(Objects.nonNull(product.getCategory()) && !"" .equalsIgnoreCase(product.getCategory())) {
+        if (Objects.nonNull(product.getCategory()) && !"".equalsIgnoreCase(product.getCategory())) {
             prodDB.setCategory(product.getCategory());
         }
 
-        if(Objects.nonNull(product.getSubcategory()) && !"" .equalsIgnoreCase(product.getSubcategory())) {
+        if (Objects.nonNull(product.getSubcategory()) && !"".equalsIgnoreCase(product.getSubcategory())) {
             prodDB.setSubcategory(product.getSubcategory());
         }
 
-        if(Objects.nonNull(product.getSellerName()) && !"" .equalsIgnoreCase(product.getSellerName())) {
+        if (Objects.nonNull(product.getSellerName()) && !"".equalsIgnoreCase(product.getSellerName())) {
             prodDB.setSellerName(product.getSellerName());
         }
 
-        if(Objects.nonNull(product.getPrice()) && !(product.getPrice() < 0)) {
+        if (Objects.nonNull(product.getPrice()) && !(product.getPrice() < 0)) {
             prodDB.setPrice(product.getPrice());
         }
 
-        if(Objects.nonNull(product.getQuantity()) && !(product.getQuantity() < 0)) {
+        if (Objects.nonNull(product.getQuantity()) && !(product.getQuantity() < 0)) {
             prodDB.setQuantity(product.getQuantity());
         }
 
@@ -71,12 +74,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> fetchProductByName(String name) {
-        return productRepository.findByNameContainingIgnoreCase(name);
-    }
+    public List<Product> searchProducts(String name, Double minPrice, Double maxPrice) {
 
-    @Override
-    public List<Product> fetchProductPrice(double min, double max) {
-        return productRepository.findByPriceBetween(min, max);
+        return productRepository.findByNameAndPriceBetween(name, minPrice, maxPrice);
     }
 }

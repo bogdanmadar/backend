@@ -2,50 +2,50 @@ package com.magazin.magazin_online.controller;
 
 import com.magazin.magazin_online.entity.Product;
 import com.magazin.magazin_online.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin("http://localhost:5173")
+@RequestMapping("/products")
 @RestController
+
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
-    @PostMapping("/products")
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @PostMapping
     public Product saveProduct(@RequestBody Product product) {
         return productService.saveProduct(product);
     }
 
-    @GetMapping("/products")
+    @GetMapping
     public List<Product> fetchProductList() {
         return productService.fetchProductList();
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     public Product fetchProductById(@PathVariable("id") Long productId) {
         return productService.fetchProductById(productId);
     }
 
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/{id}")
     public String deleteProductById(@PathVariable("id") Long productId) {
         productService.deleteProductById(productId);
         return "Product deleted successfully!";
     }
 
-    @PutMapping("/products/{id}")
+    @PutMapping("/{id}")
     public Product updateProduct(@PathVariable("id") Long productId, @RequestBody Product product) {
         return productService.updateProduct(productId, product);
     }
 
-    @GetMapping("/name/{name}")
-    public List<Product> fetchProductByName(@PathVariable("name") String name) {
-        return productService.fetchProductByName(name);
-    }
-
-    @GetMapping("/products/price")
-    public List<Product> fetchProductPrice(@RequestParam double min,@RequestParam double max) {
-        return productService.fetchProductPrice(min, max);
+    @GetMapping("/search")
+    public List<Product> searchProducts(@RequestParam(required = false) String name, @RequestParam(required = false) Double minPrice, @RequestParam(required = false) Double maxPrice) {
+        return productService.searchProducts(name, minPrice, maxPrice);
     }
 }
